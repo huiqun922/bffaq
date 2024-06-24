@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'dart:html';
 import 'faq/faq_view.dart';
 
 void main() {
+  // var url = Uri.base.toString();
+  // var uri = Uri.parse(url.replaceFirst('#/', ''));
+  // var locale = uri.queryParameters['locale'];
   runApp(const MyApp());
 }
 
@@ -28,8 +31,13 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/faq',
       routes: {
-        '/faq': (context) => const FAQView(),
-        '/faq/detail': (context) => FAQViewDetail(),
+        '/faq': (context) =>const FAQView('en'),
+      },
+      onGenerateRoute: (RouteSettings settings){
+        var url = settings.name ?? '';
+        var uri = Uri.parse(url!.replaceFirst('#/', ''));
+        var locale = uri?.queryParameters['locale'] ?? '';
+        return MaterialPageRoute(builder: (context) => FAQView(locale!));
       },
     );
   }
