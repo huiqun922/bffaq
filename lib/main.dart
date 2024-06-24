@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bfweb/faq/user_tips.dart';
 import 'package:flutter/material.dart';
 import 'dart:html';
 import 'faq/faq_view.dart';
@@ -32,11 +35,15 @@ class MyApp extends StatelessWidget {
       initialRoute: '/faq',
       routes: {
         '/faq': (context) =>const FAQView('en'),
+        '/tips': (context) =>const UserTipsView(true, 'en'),
       },
       onGenerateRoute: (RouteSettings settings){
         var url = settings.name ?? '';
         var uri = Uri.parse(url!.replaceFirst('#/', ''));
         var locale = uri?.queryParameters['locale'] ?? '';
+        if(settings.name?.contains("tips") == true){
+          return MaterialPageRoute(builder: (context) => UserTipsView(true,locale!));
+        }
         return MaterialPageRoute(builder: (context) => FAQView(locale!));
       },
     );
