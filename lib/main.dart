@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/faq': (context) =>const FAQView('en'),
         '/tips': (context) =>const UserTipsView(true, 'en'),
+        '/tips5': (context) =>const UserTipsView(false, 'en'),
       },
       onGenerateRoute: (RouteSettings settings){
         var url = settings.name ?? '';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         if(settings.name?.contains("tips5") == true){
           return MaterialPageRoute(builder: (context) => UserTipsView(true,locale!));
         }
-        if(settings.name?.contains("tips") == true){
+        if(settings.name?.contains("tips0") == true){
           return MaterialPageRoute(builder: (context) => UserTipsView(false,locale!));
         }
         return MaterialPageRoute(builder: (context) => FAQView(locale!));
