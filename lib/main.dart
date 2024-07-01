@@ -41,8 +41,11 @@ class MyApp extends StatelessWidget {
         var url = settings.name ?? '';
         var uri = Uri.parse(url!.replaceFirst('#/', ''));
         var locale = uri?.queryParameters['locale'] ?? '';
-        if(settings.name?.contains("tips") == true){
+        if(settings.name?.contains("tips5") == true){
           return MaterialPageRoute(builder: (context) => UserTipsView(true,locale!));
+        }
+        if(settings.name?.contains("tips") == true){
+          return MaterialPageRoute(builder: (context) => UserTipsView(false,locale!));
         }
         return MaterialPageRoute(builder: (context) => FAQView(locale!));
       },
