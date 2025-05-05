@@ -34,7 +34,7 @@ jobs:
 
      
       - name: Upload Web Build Files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: web-release
           path: ./build/web
@@ -46,7 +46,7 @@ jobs:
 
     steps:
     - name: Download Web Release
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: web-release
 
